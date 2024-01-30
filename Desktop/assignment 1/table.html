@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table with Search</title>
+</head>
+<body>
+
+    <input type="text" id="searchInput" placeholder="Search...">
+    <button onclick="searchTable()">Search</button>
+
+    <table border="1">
+        <tr>
+            <th>name</th>
+            <th>state</th>
+            <th>age</th>
+        </tr>
+        <tr>
+            <td>pavan</td>
+            <td>kansas</td>
+            <td>23</td>
+        </tr>
+        <tr>
+            <td>vamsi</td>
+            <td>arkansas</td>
+            <td>26</td>
+        </tr>
+
+        
+        <tr>
+            <td>harsha</td>
+            <td>texas</td>
+            <td>35</td>
+        </tr>
+        <tr>
+            <td>saradhi</td>
+            <td>arkansas</td>
+            <td>45</td>
+        </tr>
+        <tr>
+            <td>ajay</td>
+            <td>texas</td>
+            <td>32</td>
+        </tr>
+    </table>
+
+    <script>
+        function searchTable() {
+            var searchValue = document.getElementById('searchInput').value.toLowerCase();
+            var tableRows = document.querySelectorAll('table tr:not(:first-child)');
+
+            tableRows.forEach(function (row) {
+                var showRow = false;
+                row.querySelectorAll('td').forEach(function (cell) {
+                    if (cell.textContent.toLowerCase().includes(searchValue)) {
+                        showRow = true;
+                    }
+                });
+
+                if (showRow) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
